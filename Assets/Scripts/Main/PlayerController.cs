@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
+    public GameObject gameController;
+
     [SerializeField] float movementSpeed = 7;
 
     Vector2 inputVector = Vector2.zero;
@@ -15,12 +17,13 @@ public class PlayerController : MonoBehaviour
 
     public GameObject currentInteractableObjects;
 
-    private bool isInterating;
+    public bool isInterating;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        isInterating = false;
+        currentInteractableObjects = null;
     }
 
     // Update is called once per frame
@@ -33,10 +36,12 @@ public class PlayerController : MonoBehaviour
 
     private void playerInteration()
     {
-        if (isInterating)
+        if (isInterating && currentInteractableObjects != null)
         {
             Debug.Log("asda");
+            
             Destroy(currentInteractableObjects.gameObject);
+            gameController.GetComponent<GameControllerScript>().StopTimer();
             isInterating = false;
         }
     }

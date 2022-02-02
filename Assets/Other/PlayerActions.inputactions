@@ -19,7 +19,7 @@
                     "id": "1271af84-cf11-459c-a266-d1b96e9ee5dc",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "LookingAround",
