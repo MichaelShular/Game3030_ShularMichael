@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour
         if (isInterating && currentInteractableObjects != null)
         {
             Debug.Log("asda");
-            
-            Destroy(currentInteractableObjects.gameObject);
+            Instantiate(currentInteractableObjects.GetComponent<InteractableObjectsController>().miniGameCanvas);
+            //Destroy(currentInteractableObjects.gameObject);
             gameController.GetComponent<GameControllerScript>().StopTimer();
             isInterating = false;
         }
