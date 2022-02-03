@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class GameControllerScript : MonoBehaviour
 {
     public GameObject timer;
     public TextMeshProUGUI GameState;
     private int amountlives;
+    public Slider UISlider;
 
 
     private void Awake()
@@ -16,8 +18,7 @@ public class GameControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        amountlives = 3;
-        
+        UISlider.value = UISlider.maxValue = amountlives = 3;
     }
 
     // Update is called once per frame
@@ -35,6 +36,7 @@ public class GameControllerScript : MonoBehaviour
     public void checkGameState()
     {
         amountlives--;
+        UISlider.value = amountlives;     
         if(amountlives <= 0)
         {
             gameStateOver();    

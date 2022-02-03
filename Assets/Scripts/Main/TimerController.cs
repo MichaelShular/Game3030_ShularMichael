@@ -50,7 +50,7 @@ public class TimerController : MonoBehaviour
 
     public void StartTimer(float lenght)
     {
-        maxTime = lenght;
+        UISlider.maxValue = maxTime = lenght;
         coroutine = startTimer(maxTime);
         StartCoroutine(coroutine);
     }
