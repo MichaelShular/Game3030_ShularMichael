@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7173aeae4749a8c45811612efc8afda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniGame: {fileID: 550545157}
 --- !u!58 &250642566
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -238,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7173aeae4749a8c45811612efc8afda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniGame: {fileID: 550545157}
 --- !u!58 &320738825
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -365,6 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7173aeae4749a8c45811612efc8afda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniGame: {fileID: 550545157}
 --- !u!58 &1486123461
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -492,6 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7173aeae4749a8c45811612efc8afda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniGame: {fileID: 550545157}
 --- !u!58 &2061543855
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -760,6 +764,7 @@ GameObject:
   - component: {fileID: 2999172260329816551}
   - component: {fileID: 2999172260329816544}
   - component: {fileID: 2999172260329816545}
+  - component: {fileID: 550545157}
   m_Layer: 5
   m_Name: MiniGameCanvas
   m_TagString: Untagged
@@ -850,6 +855,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &550545157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999172260329816546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1678a47269fc6488e632492b6a81c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountOfBacteria: 0
+  miniGameCanvas: {fileID: 2999172260329816546}
 --- !u!1 &2999172260612292650
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,6 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7173aeae4749a8c45811612efc8afda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniGame: {fileID: 550545157}
 --- !u!58 &2999172260612292653
 CircleCollider2D:
   m_ObjectHideFlags: 0

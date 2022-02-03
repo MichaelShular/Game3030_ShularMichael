@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class BacteriaMovement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public bacteriaSquasherController miniGame;
     Rigidbody2D body;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,10 @@ public class BacteriaMovement : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
+        Debug.Log("Enter");
         Destroy(this.gameObject);
+        miniGame.subtractBacteria();
+        
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
