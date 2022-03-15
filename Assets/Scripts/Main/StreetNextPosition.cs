@@ -1,7 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum StreetType
+    { 
+        None,
+        Stright,
+        Left,
+        Right
+    }
 public class StreetNextPosition : MonoBehaviour
 {
     public GameObject _strightStreet;

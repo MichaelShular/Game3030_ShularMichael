@@ -22,7 +22,7 @@ public class TimerController : MonoBehaviour
         UISlider = GetComponent<Slider>();
         UISlider.maxValue = maxTime;
         UISlider.value = 0;
-        StartTimer(5);
+        //StartTimer(5);
         
     }
 

@@ -51,4 +51,14 @@ public class GameControllerScript : MonoBehaviour
         timer.GetComponent<TimerController>().stopTimer();
     }
 
+    public void changeHealth(int amount)
+    {
+        amountlives += amount;
+        UISlider.value = amountlives;
+        if (amountlives <= 0)
+        {
+            gameStateOver();
+        }
+    }
+
 }
