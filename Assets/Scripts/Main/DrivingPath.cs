@@ -5,6 +5,7 @@ using UnityEngine;
 public class DrivingPath : MonoBehaviour
 {
     public List<StreetType> currentStreetTurnsPattern;
+    public GameObject ambulance;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class DrivingPath : MonoBehaviour
             }
         }
 
+        ambulance.GetComponent<AmbulanceMovement>().buildStreetObjects();
     }
 
     // Update is called once per frame

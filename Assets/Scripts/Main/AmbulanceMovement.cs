@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Cinemachine;
 public class AmbulanceMovement : MonoBehaviour
 {
     public float _moveSpeed;
     private float _interpolateAmount;
-    
+
     public GameObject _pointA;
     public GameObject _pointB;
     public GameObject _startB;
@@ -24,6 +25,17 @@ public class AmbulanceMovement : MonoBehaviour
     private GameObject gameController;
     private int currentStreetCount;
 
+    public GameObject streetOne;
+    public GameObject streetTwo;
+    public GameObject streetThree;
+
+    public GameObject _striaghtButton;
+    public GameObject _leftButton;
+    public GameObject _rightButton;
+
+    public GameObject FirstPersonCamera;
+    public GameObject spawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,21 +48,22 @@ public class AmbulanceMovement : MonoBehaviour
         _startA = _pointA;
         _startB = _pointB;
         currentStreetCount = 0;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_interpolateAmount < 1 )
+        if (_interpolateAmount < 1)
         {
             _interpolateAmount = _interpolateAmount + _moveSpeed * Time.deltaTime;
             transform.position = Vector3.Lerp(_pointA.transform.position, _pointB.transform.position, _interpolateAmount);
             return;
         }
-        
+
         //if(_interpolateAmount < 1 && (currentStreetChoice == StreetType.Left || currentStreetChoice == StreetType.Right))
         //{
-            
+
 
         //    _interpolateAmount = _interpolateAmount + _moveSpeed * Time.deltaTime;
 
@@ -72,20 +85,20 @@ public class AmbulanceMovement : MonoBehaviour
         //        }
         //    }
 
-            
+
         //    Debug.Log(transform.rotation.eulerAngles.y);
-            
+
         //    transform.position = CubicLerp(_pointA.transform.position, _pointATurnPoint.transform.position, _pointBTurnPoint.transform.position, _pointB.transform.position, _interpolateAmount);
         //    if(_interpolateAmount >= 1)
         //    {
         //        _interpolateAmount = 0;
         //    } 
-            
+
         //    return;
         //}
         _showUIChoice.SetActive(true);
-        Debug.Log(fadeImage.GetComponent<Image>().color.a);
-        if(fadeImage.GetComponent<Image>().color.a >= 0.8)
+        //Debug.Log(fadeImage.GetComponent<Image>().color.a);
+        if (fadeImage.GetComponent<Image>().color.a >= 0.8)
         {
             StartCoroutine(startUnfade());
         }
@@ -97,7 +110,7 @@ public class AmbulanceMovement : MonoBehaviour
         _currentStreet.GetComponent<StreetNextPosition>();
     }
 
-    
+
 
     public void strightButton()
     {
@@ -141,13 +154,14 @@ public class AmbulanceMovement : MonoBehaviour
             fadeImage.GetComponent<Image>().color = new Vector4(fadeImage.GetComponent<Image>().color.r, fadeImage.GetComponent<Image>().color.g, fadeImage.GetComponent<Image>().color.b, fadeAmount);
             yield return null;
         }
-        
+
     }
 
     IEnumerator startUnfade()
     {
         float fadeAmount = 0.8f;
-        ResetstreetChoice();           
+        ResetstreetChoice();
+        buildStreetObjects();
         while (fadeAmount >= 0)
         {
             fadeAmount -= 0.01f;
@@ -162,7 +176,7 @@ public class AmbulanceMovement : MonoBehaviour
         canTurn = true;
     }
 
-        private Vector3 QuadraticLerp(Vector3 a, Vector3 b, Vector3 c, float t)
+    private Vector3 QuadraticLerp(Vector3 a, Vector3 b, Vector3 c, float t)
     {
         Vector3 ab = Vector3.Lerp(a, b, t);
         Vector3 bc = Vector3.Lerp(b, c, t);
@@ -186,13 +200,22 @@ public class AmbulanceMovement : MonoBehaviour
 
         _pointA = _startA;
         _pointB = _startB;
+
+        if(currentStreetCount == 0)
+        {
+            _pointA = spawnPoint;
+            _pointB = spawnPoint;
+            FirstPersonCamera.GetComponent<CinemachineVirtualCamera>().Priority = 15;
+            return;
+        }
+
         currentStreetCount++;
     }
 
     private void buildResult()
     {
         //add or sub time
-        if (gameController.GetComponent<DrivingPath>().currentStreetTurnsPattern[currentStreetCount] == currentStreetChoice )
+        if (gameController.GetComponent<DrivingPath>().currentStreetTurnsPattern[currentStreetCount] == currentStreetChoice)
         {
             displayResult.text = "";
         }
@@ -205,7 +228,56 @@ public class AmbulanceMovement : MonoBehaviour
 
     public void buildStreetObjects()
     {
-
+        int numberOfStreets = Random.Range(0, 100);
+        streetOne.SetActive(true);
+        streetTwo.SetActive(true);
+        streetThree.SetActive(true);
+        _striaghtButton.SetActive(true);
+        _rightButton.SetActive(true);
+        _leftButton.SetActive(true);
+        switch (gameController.GetComponent<DrivingPath>().currentStreetTurnsPattern[currentStreetCount])
+        {
+            case StreetType.None:
+                break;
+            case StreetType.Stright:
+                if (numberOfStreets <= 50 && numberOfStreets > 25)
+                {
+                    streetThree.SetActive(false);
+                    _leftButton.SetActive(false);
+                }
+                else if (numberOfStreets < 25)
+                {
+                    streetTwo.SetActive(false);
+                    _rightButton.SetActive(false);
+                }
+                break;
+            case StreetType.Left:
+                if (numberOfStreets <= 50 && numberOfStreets > 25)
+                {
+                    streetOne.SetActive(false);
+                    _striaghtButton.SetActive(false);
+                }
+                else if (numberOfStreets < 25)
+                {
+                    streetTwo.SetActive(false);
+                    _rightButton.SetActive(false);
+                }
+                break;
+            case StreetType.Right:
+                if (numberOfStreets <= 50 && numberOfStreets > 25)
+                {
+                    streetThree.SetActive(false);
+                    _leftButton.SetActive(false);
+                }
+                else if (numberOfStreets < 25)
+                {
+                    streetOne.SetActive(false);
+                    _striaghtButton.SetActive(false);
+                }
+                break;
+            default:
+                break;
+        }
     }
 
 }
