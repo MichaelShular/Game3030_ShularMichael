@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class GameControllerScript : MonoBehaviour
 {
     public GameObject timer;
-    public TextMeshProUGUI GameState;
+    public GameObject GameState;
+    public TextMeshProUGUI GameStateText;
+
     private int amountlives;
     public Slider UISlider;
 
@@ -19,6 +21,7 @@ public class GameControllerScript : MonoBehaviour
     void Start()
     {
         UISlider.value = UISlider.maxValue = amountlives = 3;
+        GameState.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,10 +30,10 @@ public class GameControllerScript : MonoBehaviour
                 
     }
 
-    public void gameStateOver()
+    public void gameStateOver(string text)
     {
-        GameState.text = "Game Over";
-        GameState.enabled = true;
+        GameStateText.text = text;
+        GameState.SetActive(true);
     }
 
     public void checkGameState()
@@ -39,7 +42,7 @@ public class GameControllerScript : MonoBehaviour
         UISlider.value = amountlives;     
         if(amountlives <= 0)
         {
-            gameStateOver();    
+            gameStateOver("Game Over\n\nYou took too much time");    
         }
         else
         {
@@ -57,7 +60,7 @@ public class GameControllerScript : MonoBehaviour
         UISlider.value = amountlives;
         if (amountlives <= 0)
         {
-            gameStateOver();
+            gameStateOver("Game Over\n\nYou took too much time");
         }
     }
 

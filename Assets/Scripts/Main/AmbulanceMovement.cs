@@ -203,6 +203,9 @@ public class AmbulanceMovement : MonoBehaviour
 
         if(currentStreetCount == 0)
         {
+            streetOne.SetActive(false);
+            streetTwo.SetActive(false);
+            streetThree.SetActive(false);
             _pointA = spawnPoint;
             _pointB = spawnPoint;
             FirstPersonCamera.GetComponent<CinemachineVirtualCamera>().Priority = 15;
