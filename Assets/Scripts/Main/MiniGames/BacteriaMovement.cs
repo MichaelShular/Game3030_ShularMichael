@@ -7,11 +7,14 @@ public class BacteriaMovement : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     public bacteriaSquasherController miniGame;
     Rigidbody2D body;
+    public bool badBac;
     // Start is called before the first frame update
     void Start()
     {
+        //badBac = false;
         body = GetComponent<Rigidbody2D>();
         StartCoroutine(timerForMovement());
+        miniGame = GameObject.FindGameObjectWithTag("MiniGameController").GetComponent<bacteriaSquasherController>();
     }
 
     // Update is called once per frame
@@ -42,4 +45,6 @@ public class BacteriaMovement : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
 
     }
+
+
 }

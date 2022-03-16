@@ -54,6 +54,11 @@ public class AmbulanceMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(currentStreetCount > 0)
+        {
+            return;
+        }
+
         if (_interpolateAmount < 1)
         {
             _interpolateAmount = _interpolateAmount + _moveSpeed * Time.deltaTime;
@@ -206,10 +211,9 @@ public class AmbulanceMovement : MonoBehaviour
             streetOne.SetActive(false);
             streetTwo.SetActive(false);
             streetThree.SetActive(false);
-            _pointA = spawnPoint;
-            _pointB = spawnPoint;
+            this.transform.position = spawnPoint.transform.position;
             FirstPersonCamera.GetComponent<CinemachineVirtualCamera>().Priority = 15;
-            return;
+            
         }
 
         currentStreetCount++;

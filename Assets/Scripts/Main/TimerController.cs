@@ -57,7 +57,7 @@ public class TimerController : MonoBehaviour
 
     public void stopTimer()
     {
-        StopCoroutine(coroutine);
+        //StopCoroutine(coroutine);
     }
 
 }
