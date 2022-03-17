@@ -7,6 +7,7 @@ TagManager:
   - spawnPointBac
   - MiniGameController
   - Bacteria
+  - CutPart
   layers:
   - Default
   - TransparentFX
