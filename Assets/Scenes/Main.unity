@@ -2104,6 +2104,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4491727226495236489, guid: 2928f90305df7e44ead0dffc921f8c38, type: 3}
   m_PrefabInstance: {fileID: 287487053}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &868722554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 868722555}
+  m_Layer: 0
+  m_Name: BloodSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &868722555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868722554}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.126, y: 1.09, z: 2.562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &888851676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,6 +3490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCivilian (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2001d9610bea614d99085f97f2ce3c8, type: 3}
+      propertyPath: m_TagString
+      value: Patient
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2001d9610bea614d99085f97f2ce3c8, type: 3}
 --- !u!4 &1343708415 stripped
@@ -3868,6 +3902,18 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1433182701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433182699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a3b1bcb51f03144ba6104f3968d068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1433182702 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 50a5846cd15dc9640b77bfcdc397cbd5, type: 3}
@@ -4794,7 +4840,7 @@ Transform:
   m_LocalScale: {x: 0.02, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1749754897
 MonoBehaviour:
@@ -6089,6 +6135,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2111215052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111215047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc946a4676b85443b980aec1509ccfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMale: 0
+  isIDEven: 0
+  isRightName: 0
+  isBleeding: 0
+  isBorn: 0
+  idNumber: 0
+  bornNum: 0
+  _name: 
+  _nameNUm: 0
+  bleedingNum: 0
+  listNames:
+  - John
+  - Olivia
+  - Noah
+  - Ava
+  - Alexander
+  - Charlotte
+  - William
+  - Sophia
+  - Oliver
+  - Isabella
+  _blood: {fileID: 5264059563694192127, guid: 6d3d0382b5bfb4e4d9c210e4f63f5438, type: 3}
+  spawnblood: {fileID: 868722555}
 --- !u!1 &2120960856
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class PillController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     Image pillImage;
     public Color pillColor;
+    public bool takePill;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,10 @@ public class PillController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
-
+        if (!takePill)
+        {
+            GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+        }
         Destroy(this.gameObject);
     }
 }

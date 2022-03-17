@@ -122,6 +122,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8568455770ea810419ded2e87002ca48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  info: {fileID: 0}
+  pills:
+  - {fileID: 2721146369936005931}
+  - {fileID: 2721146370304517090}
+  - {fileID: 2721146369143541496}
+  - {fileID: 2721146370220417703}
+  - {fileID: 2721146370253049395}
+  - {fileID: 2721146369471743566}
+  failMiniGame: 0
 --- !u!1 &2721146369002119883
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +220,7 @@ GameObject:
   - component: {fileID: 2721146369143541254}
   m_Layer: 5
   m_Name: Pill (2)
-  m_TagString: Untagged
+  m_TagString: PillButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pillColor: {r: 1, g: 0.6679427, b: 0, a: 1}
+  takePill: 0
 --- !u!1 &2721146369471743566
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +310,7 @@ GameObject:
   - component: {fileID: 2721146369471743564}
   m_Layer: 5
   m_Name: Pill (5)
-  m_TagString: Untagged
+  m_TagString: PillButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -375,6 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pillColor: {r: 0, g: 1, b: 0.060156345, a: 1}
+  takePill: 0
 --- !u!1 &2721146369936005931
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +400,7 @@ GameObject:
   - component: {fileID: 2721146369936005943}
   m_Layer: 5
   m_Name: Pill
-  m_TagString: Untagged
+  m_TagString: PillButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -464,6 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pillColor: {r: 1, g: 0, b: 0, a: 1}
+  takePill: 0
 --- !u!1 &2721146370210567884
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +565,7 @@ GameObject:
   - component: {fileID: 2721146370220417701}
   m_Layer: 5
   m_Name: Pill (3)
-  m_TagString: Untagged
+  m_TagString: PillButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -628,6 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pillColor: {r: 1, g: 0.92855203, b: 0, a: 1}
+  takePill: 0
 --- !u!1 &2721146370253049395
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +655,7 @@ GameObject:
   - component: {fileID: 2721146370253049393}
   m_Layer: 5
   m_Name: Pill (4)
-  m_TagString: Untagged
+  m_TagString: PillButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -717,6 +730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pillColor: {r: 0, g: 0.53380704, b: 1, a: 1}
+  takePill: 0
 --- !u!1 &2721146370304517090
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +745,7 @@ GameObject:
   - component: {fileID: 2721146370304517088}
   m_Layer: 5
   m_Name: Pill (1)
-  m_TagString: Untagged
+  m_TagString: PillButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -806,6 +820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pillColor: {r: 1, g: 0, b: 0.98298883, a: 1}
+  takePill: 0
 --- !u!1 &2721146370841880472
 GameObject:
   m_ObjectHideFlags: 0

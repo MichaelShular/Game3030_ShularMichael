@@ -8,6 +8,8 @@ TagManager:
   - MiniGameController
   - Bacteria
   - CutPart
+  - Patient
+  - PillButtons
   layers:
   - Default
   - TransparentFX
