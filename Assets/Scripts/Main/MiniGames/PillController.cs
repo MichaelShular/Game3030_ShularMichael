@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PillController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class PillController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     Image pillImage;
     public Color pillColor;
@@ -19,16 +19,22 @@ public class PillController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        Destroy(this.gameObject);
+
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
 
 
+    }
+
+    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    {
+
+        Destroy(this.gameObject);
     }
 }
