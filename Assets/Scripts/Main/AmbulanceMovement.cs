@@ -36,6 +36,11 @@ public class AmbulanceMovement : MonoBehaviour
     public GameObject FirstPersonCamera;
     public GameObject spawnPoint;
 
+    public GameObject lamp;
+    public GameObject Building;
+    public GameObject fireHy;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,13 +53,13 @@ public class AmbulanceMovement : MonoBehaviour
         _startA = _pointA;
         _startB = _pointB;
         currentStreetCount = 0;
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(currentStreetCount > 0)
+        if(currentStreetCount > 2)
         {
             return;
         }
@@ -155,7 +160,7 @@ public class AmbulanceMovement : MonoBehaviour
         buildResult();
         while (fadeAmount <= 1)
         {
-            fadeAmount += 0.002f;
+            fadeAmount += 0.005f;
             fadeImage.GetComponent<Image>().color = new Vector4(fadeImage.GetComponent<Image>().color.r, fadeImage.GetComponent<Image>().color.g, fadeImage.GetComponent<Image>().color.b, fadeAmount);
             yield return null;
         }
@@ -206,14 +211,13 @@ public class AmbulanceMovement : MonoBehaviour
         _pointA = _startA;
         _pointB = _startB;
 
-        if(currentStreetCount == 0)
+        if(currentStreetCount == 2)
         {
             streetOne.SetActive(false);
             streetTwo.SetActive(false);
             streetThree.SetActive(false);
             this.transform.position = spawnPoint.transform.position;
             FirstPersonCamera.GetComponent<CinemachineVirtualCamera>().Priority = 15;
-            
         }
 
         currentStreetCount++;
@@ -242,23 +246,30 @@ public class AmbulanceMovement : MonoBehaviour
         _striaghtButton.SetActive(true);
         _rightButton.SetActive(true);
         _leftButton.SetActive(true);
+        lamp.SetActive(false);
+        fireHy.SetActive(false);
+        Building.SetActive(false);
         switch (gameController.GetComponent<DrivingPath>().currentStreetTurnsPattern[currentStreetCount])
         {
             case StreetType.None:
                 break;
             case StreetType.Stright:
+                Building.SetActive(true);
                 if (numberOfStreets <= 50 && numberOfStreets > 25)
                 {
+                    
                     streetThree.SetActive(false);
                     _leftButton.SetActive(false);
                 }
                 else if (numberOfStreets < 25)
                 {
+                    
                     streetTwo.SetActive(false);
                     _rightButton.SetActive(false);
                 }
                 break;
             case StreetType.Left:
+                fireHy.SetActive(true);
                 if (numberOfStreets <= 50 && numberOfStreets > 25)
                 {
                     streetOne.SetActive(false);
@@ -271,6 +282,7 @@ public class AmbulanceMovement : MonoBehaviour
                 }
                 break;
             case StreetType.Right:
+                lamp.SetActive(true);
                 if (numberOfStreets <= 50 && numberOfStreets > 25)
                 {
                     streetThree.SetActive(false);

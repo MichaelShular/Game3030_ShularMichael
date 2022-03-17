@@ -7,6 +7,8 @@ public class MiniChooseController : MonoBehaviour
     [SerializeField] public GameObject miniGameDisinfectantCanvas;
     [SerializeField] public GameObject miniGamePillsCanvas;
     [SerializeField] public GameObject miniGameCutOpenCanvas;
+    [SerializeField] public GameObject miniGameBoneSortCanvas;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,12 @@ public class MiniChooseController : MonoBehaviour
     public void OpenMiniGameCutOpen()
     {
         Instantiate(miniGameCutOpenCanvas);
+        Destroy(this.gameObject);
+    }
+
+    public void OpenMiniGameBoneSort()
+    {
+        Instantiate(miniGameBoneSortCanvas);
         Destroy(this.gameObject);
     }
     public void backButton()
