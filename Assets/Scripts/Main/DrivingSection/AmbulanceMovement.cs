@@ -23,7 +23,7 @@ public class AmbulanceMovement : MonoBehaviour
     bool canTurn;
     public TextMeshProUGUI displayResult;
     private GameObject gameController;
-    private int currentStreetCount;
+    public int currentStreetCount;
 
     public GameObject streetOne;
     public GameObject streetTwo;
@@ -225,16 +225,16 @@ public class AmbulanceMovement : MonoBehaviour
 
     private void buildResult()
     {
-        //add or sub time
-        if (gameController.GetComponent<DrivingPath>().currentStreetTurnsPattern[currentStreetCount] == currentStreetChoice)
-        {
-            displayResult.text = "";
-        }
-        else
-        {
-            gameController.GetComponent<GameControllerScript>().changeHealth(-1);
-            displayResult.text = "Took a wrong turn\n\nThe patient condition worsens";
-        }
+        ////add or sub time
+        //if (gameController.GetComponent<DrivingPath>().currentStreetTurnsPattern[currentStreetCount] == currentStreetChoice)
+        //{
+        //    displayResult.text = "";
+        //}
+        //else
+        //{
+        //    gameController.GetComponent<GameControllerScript>().changeHealth(-1);
+        //    displayResult.text = "Took a wrong turn\n\nThe patient condition worsens";
+        //}
     }
 
     public void buildStreetObjects()
@@ -249,54 +249,54 @@ public class AmbulanceMovement : MonoBehaviour
         lamp.SetActive(false);
         fireHy.SetActive(false);
         Building.SetActive(false);
-        switch (gameController.GetComponent<DrivingPath>().currentStreetTurnsPattern[currentStreetCount])
-        {
-            case StreetType.None:
-                break;
-            case StreetType.Stright:
-                Building.SetActive(true);
-                if (numberOfStreets <= 50 && numberOfStreets > 25)
-                {
+        //switch (gameController.GetComponent<DrivingPath>().currentStreetTurnsPattern[currentStreetCount])
+        //{
+        //    case StreetType.None:
+        //        break;
+        //    case StreetType.Stright:
+        //        Building.SetActive(true);
+        //        if (numberOfStreets <= 50 && numberOfStreets > 25)
+        //        {
                     
-                    streetThree.SetActive(false);
-                    _leftButton.SetActive(false);
-                }
-                else if (numberOfStreets < 25)
-                {
+        //            streetThree.SetActive(false);
+        //            _leftButton.SetActive(false);
+        //        }
+        //        else if (numberOfStreets < 25)
+        //        {
                     
-                    streetTwo.SetActive(false);
-                    _rightButton.SetActive(false);
-                }
-                break;
-            case StreetType.Left:
-                fireHy.SetActive(true);
-                if (numberOfStreets <= 50 && numberOfStreets > 25)
-                {
-                    streetOne.SetActive(false);
-                    _striaghtButton.SetActive(false);
-                }
-                else if (numberOfStreets < 25)
-                {
-                    streetTwo.SetActive(false);
-                    _rightButton.SetActive(false);
-                }
-                break;
-            case StreetType.Right:
-                lamp.SetActive(true);
-                if (numberOfStreets <= 50 && numberOfStreets > 25)
-                {
-                    streetThree.SetActive(false);
-                    _leftButton.SetActive(false);
-                }
-                else if (numberOfStreets < 25)
-                {
-                    streetOne.SetActive(false);
-                    _striaghtButton.SetActive(false);
-                }
-                break;
-            default:
-                break;
-        }
+        //            streetTwo.SetActive(false);
+        //            _rightButton.SetActive(false);
+        //        }
+        //        break;
+        //    case StreetType.Left:
+        //        fireHy.SetActive(true);
+        //        if (numberOfStreets <= 50 && numberOfStreets > 25)
+        //        {
+        //            streetOne.SetActive(false);
+        //            _striaghtButton.SetActive(false);
+        //        }
+        //        else if (numberOfStreets < 25)
+        //        {
+        //            streetTwo.SetActive(false);
+        //            _rightButton.SetActive(false);
+        //        }
+        //        break;
+        //    case StreetType.Right:
+        //        lamp.SetActive(true);
+        //        if (numberOfStreets <= 50 && numberOfStreets > 25)
+        //        {
+        //            streetThree.SetActive(false);
+        //            _leftButton.SetActive(false);
+        //        }
+        //        else if (numberOfStreets < 25)
+        //        {
+        //            streetOne.SetActive(false);
+        //            _striaghtButton.SetActive(false);
+        //        }
+        //        break;
+        //    default:
+        //        break;
+        //}
     }
 
 }
