@@ -12172,6 +12172,7 @@ GameObject:
   - component: {fileID: 1378192687}
   - component: {fileID: 1378192686}
   - component: {fileID: 1378192688}
+  - component: {fileID: 1378192689}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -12225,7 +12226,7 @@ MonoBehaviour:
   LeftLane: {fileID: 69212788}
   RightLane: {fileID: 1837687081}
   ambulance: {fileID: 119816279}
-  numberOfTurns: 3
+  numberOfTurns: 1
   currentStreetTurnsPattern: 
   winVisuals:
   - {fileID: 1163052877}
@@ -12317,6 +12318,25 @@ MonoBehaviour:
   - {fileID: 1430483108}
   - {fileID: 1211173248}
   - {fileID: 797938179}
+--- !u!114 &1378192689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378192685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea4edaa92f1278748a86c9fe27aeaacb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diseasesNames:
+  - Fepisis Coli
+  - Lepra Punctum
+  - Fatuitas Cerebralis
+  - Choxia Nocfectio
+  winningDiseaseName: 
+  gameOrderNeedToPlay: 
 --- !u!1001 &1381004821
 PrefabInstance:
   m_ObjectHideFlags: 0

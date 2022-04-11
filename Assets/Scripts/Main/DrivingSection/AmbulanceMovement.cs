@@ -59,7 +59,7 @@ public class AmbulanceMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentStreetCount > 2)
+        if(currentStreetCount == gameController.GetComponent<BuildStreetScript>().numberOfTurns)
         {
             return;
         }
@@ -215,10 +215,12 @@ public class AmbulanceMovement : MonoBehaviour
         _pointA = _startA;
         _pointB = _startB;
 
-        
-        
 
-        if (currentStreetCount == 2)
+        //vvvv Needs to be above the if statement vvvv 
+        currentStreetCount++;
+        
+        //Next Gamemode
+        if (currentStreetCount == gameController.GetComponent<BuildStreetScript>().numberOfTurns)
         {
             streetOne.SetActive(false);
             streetTwo.SetActive(false);
@@ -229,7 +231,7 @@ public class AmbulanceMovement : MonoBehaviour
         
         
         
-        currentStreetCount++;
+        
     }
 
     private void buildResult()
