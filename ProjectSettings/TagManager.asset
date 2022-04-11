@@ -10,6 +10,7 @@ TagManager:
   - CutPart
   - Patient
   - PillButtons
+  - FillerBuildings
   layers:
   - Default
   - TransparentFX

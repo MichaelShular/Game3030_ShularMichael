@@ -19,9 +19,10 @@ public class BuildStreetScript : MonoBehaviour
 
     [Header("Ambulance")]
     public GameObject ambulance;
+    public int numberOfTurns;
 
     private int whichBuildingsToSpawn;
-    private List<WhichStreetLayout> currentStreetTurnsPattern;
+    public List<WhichStreetLayout> currentStreetTurnsPattern;
     private int currentStreetTurnsPatternCount;
 
     private StreetType CorrectButtonPress;
@@ -33,6 +34,11 @@ public class BuildStreetScript : MonoBehaviour
 
     [Header("Building And Props")]
     public List<GameObject> winVisuals;
+    public List<GameObject> FillerTopRight;
+    public List<GameObject> FillerTopLeft;
+    public List<GameObject> FillerBottomRight;
+    public List<GameObject> FillerBottomLeft;
+
 
     [Header("Street Name Lists")]
     public string winningStreetName;
@@ -51,7 +57,7 @@ public class BuildStreetScript : MonoBehaviour
         currentStreetTurnsPattern = new List<WhichStreetLayout>();
         
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < numberOfTurns; i++)
         {
             int temp = Random.Range(0, 4);
             switch (temp)
@@ -82,6 +88,8 @@ public class BuildStreetScript : MonoBehaviour
 
     public void BuildStreet()
     {
+        if (numberOfTurns <= ambulance.GetComponent<AmbulanceMovement>().currentStreetCount) return;
+
         int temp;
         currentStreetTurnsPatternCount = ambulance.GetComponent<AmbulanceMovement>().currentStreetCount;
         BottomLeftFilled = BottomRightFilled = TopLeftFilled = TopRightFilled = false;
@@ -96,6 +104,7 @@ public class BuildStreetScript : MonoBehaviour
             int tempNumber = Random.Range(0, FillList.Count);
             string randomName = FillList[tempNumber];
             UIButton.GetComponentInChildren<TextMeshProUGUI>().text = randomName;
+            UIButton.SetActive(true);
         }
 
 
@@ -104,7 +113,9 @@ public class BuildStreetScript : MonoBehaviour
             case WhichStreetLayout.None:
                 break;
             case WhichStreetLayout.StrightLeft:
+                UIButtonList[2].SetActive(false);
                 //streetLamps
+               
                 winVisuals[11].gameObject.SetActive(true);
 
                 RightLane.SetActive(false);
@@ -120,8 +131,12 @@ public class BuildStreetScript : MonoBehaviour
                     UIButtonList[1].GetComponentInChildren<TextMeshProUGUI>().text = winningStreetName;
                 }
 
+                
+
                 break;
             case WhichStreetLayout.StrightRight:
+                
+                UIButtonList[1].SetActive(false);
                 //streetLamps
                 winVisuals[11].gameObject.SetActive(true);
 
@@ -139,8 +154,13 @@ public class BuildStreetScript : MonoBehaviour
                     UIButtonList[2].GetComponentInChildren<TextMeshProUGUI>().text = winningStreetName;
                 }
 
+                
+
                 break;
             case WhichStreetLayout.LeftRight:
+
+                UIButtonList[0].SetActive(false);
+                                
                 TopLeftFilled = true;
                 winVisuals[4].gameObject.SetActive(true);
 
@@ -156,6 +176,8 @@ public class BuildStreetScript : MonoBehaviour
                 {
                     UIButtonList[2].GetComponentInChildren<TextMeshProUGUI>().text = winningStreetName;
                 }
+
+                
 
                 break;
             case WhichStreetLayout.AllStreets:
@@ -185,6 +207,13 @@ public class BuildStreetScript : MonoBehaviour
             default:
                 break;
         }
+
+        //fill rest of street
+        addFillerBuildingAndProps(FillerTopLeft, TopLeftFilled);
+        addFillerBuildingAndProps(FillerTopRight, TopRightFilled);
+        addFillerBuildingAndProps(FillerBottomLeft, BottomLeftFilled);
+        addFillerBuildingAndProps(FillerBottomRight, BottomRightFilled);
+
     }
 
     private string StrightLeftSection()
@@ -361,15 +390,39 @@ public class BuildStreetScript : MonoBehaviour
         return streetNameList[temp];
     }
 
-    private void AddingStreetNamesToUI(List<string> streetNameList )
+    private void addFillerBuildingAndProps(List<GameObject> fillerList, bool AreaFilled)
     {
+        if (AreaFilled) return;
+
+        int tempNum = Random.Range(0, fillerList.Count);
+        fillerList[tempNum].SetActive(true);
 
 
     }
 
 
-    private void ResetStreet()
+    public void ResetStreet()
     {
+        foreach (var buildings in winVisuals)
+        {
+            buildings.gameObject.SetActive(false);
+        }
+        foreach (var buildings in FillerBottomLeft)
+        {
+            buildings.gameObject.SetActive(false);
+        }
+        foreach (var buildings in FillerBottomRight)
+        {
+            buildings.gameObject.SetActive(false);
+        }
+        foreach (var buildings in FillerTopLeft)
+        {
+            buildings.gameObject.SetActive(false);
+        }
+        foreach (var buildings in FillerTopRight)
+        {
+            buildings.gameObject.SetActive(false);
+        }
 
     } 
 

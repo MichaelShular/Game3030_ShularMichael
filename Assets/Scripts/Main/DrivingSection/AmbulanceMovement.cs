@@ -17,7 +17,7 @@ public class AmbulanceMovement : MonoBehaviour
     public GameObject _currentStreet;
     public GameObject _showUIChoice;
 
-    public StreetType currentStreetChoice;
+    public string StreetNameCheck;
     public GameObject fadeImage;
 
     bool canTurn;
@@ -36,9 +36,9 @@ public class AmbulanceMovement : MonoBehaviour
     public GameObject FirstPersonCamera;
     public GameObject spawnPoint;
 
-    public GameObject lamp;
-    public GameObject Building;
-    public GameObject fireHy;
+    //public GameObject lamp;
+    //public GameObject Building;
+    //public GameObject fireHy;
 
 
     // Start is called before the first frame update
@@ -48,7 +48,7 @@ public class AmbulanceMovement : MonoBehaviour
         _interpolateAmount = 0.0f;
         _showUIChoice.SetActive(false);
         _pointB = _currentStreet.GetComponent<StreetNextPosition>()._TopPointB;
-        currentStreetChoice = StreetType.None;
+        StreetNameCheck = "";
         canTurn = false;
         _startA = _pointA;
         _startB = _pointB;
@@ -124,7 +124,7 @@ public class AmbulanceMovement : MonoBehaviour
 
     public void strightButton()
     {
-        currentStreetChoice = StreetType.Stright;
+        StreetNameCheck = _striaghtButton.GetComponentInChildren<TextMeshProUGUI>().text;
         _pointA = _pointB;
         _pointB = _currentStreet.GetComponent<StreetNextPosition>()._strightStreet.GetComponent<StreetNextPosition>()._TopPointB;
         _interpolateAmount = 0;
@@ -132,7 +132,7 @@ public class AmbulanceMovement : MonoBehaviour
     }
     public void leftButton()
     {
-        currentStreetChoice = StreetType.Left;
+        StreetNameCheck = _leftButton.GetComponentInChildren<TextMeshProUGUI>().text;
         _pointA = _pointB;
         _pointB = _currentStreet.GetComponent<StreetNextPosition>()._leftStreet.GetComponent<StreetNextPosition>()._TopPointA;
         StartCoroutine(startFade());
@@ -143,7 +143,8 @@ public class AmbulanceMovement : MonoBehaviour
     }
     public void rightButton()
     {
-        currentStreetChoice = StreetType.Right;
+        StreetNameCheck = _rightButton.GetComponentInChildren<TextMeshProUGUI>().text;
+
         _pointA = _pointB;
         _pointB = _currentStreet.GetComponent<StreetNextPosition>()._rightStreet.GetComponent<StreetNextPosition>()._BottomPointA;
         StartCoroutine(startFade());
@@ -171,7 +172,10 @@ public class AmbulanceMovement : MonoBehaviour
     {
         float fadeAmount = 0.8f;
         ResetstreetChoice();
-        buildStreetObjects();
+        gameController.GetComponent<BuildStreetScript>().ResetStreet();
+
+        //buildStreetObjects();
+        gameController.GetComponent<BuildStreetScript>().BuildStreet();
         while (fadeAmount >= 0)
         {
             fadeAmount -= 0.01f;
@@ -204,14 +208,17 @@ public class AmbulanceMovement : MonoBehaviour
         _interpolateAmount = 0.0f;
         _showUIChoice.SetActive(false);
         _pointB = _currentStreet.GetComponent<StreetNextPosition>()._TopPointB;
-        currentStreetChoice = StreetType.None;
+        StreetNameCheck = "";
         canTurn = false;
         fadeImage.SetActive(false);
 
         _pointA = _startA;
         _pointB = _startB;
 
-        if(currentStreetCount == 2)
+        
+        
+
+        if (currentStreetCount == 2)
         {
             streetOne.SetActive(false);
             streetTwo.SetActive(false);
@@ -219,36 +226,38 @@ public class AmbulanceMovement : MonoBehaviour
             this.transform.position = spawnPoint.transform.position;
             FirstPersonCamera.GetComponent<CinemachineVirtualCamera>().Priority = 15;
         }
-
+        
+        
+        
         currentStreetCount++;
     }
 
     private void buildResult()
     {
-        ////add or sub time
-        //if (gameController.GetComponent<DrivingPath>().currentStreetTurnsPattern[currentStreetCount] == currentStreetChoice)
-        //{
-        //    displayResult.text = "";
-        //}
-        //else
-        //{
-        //    gameController.GetComponent<GameControllerScript>().changeHealth(-1);
-        //    displayResult.text = "Took a wrong turn\n\nThe patient condition worsens";
-        //}
+        //add or sub time
+        if (gameController.GetComponent<BuildStreetScript>().winningStreetName == StreetNameCheck)
+        {
+            displayResult.text = "";
+        }
+        else
+        {
+            gameController.GetComponent<GameControllerScript>().changeHealth(-1);
+            displayResult.text = "Took a wrong turn\n\nThe patient condition worsens";
+        }
     }
 
     public void buildStreetObjects()
     {
-        int numberOfStreets = Random.Range(0, 100);
+        //int numberOfStreets = Random.Range(0, 100);
         streetOne.SetActive(true);
         streetTwo.SetActive(true);
         streetThree.SetActive(true);
         _striaghtButton.SetActive(true);
         _rightButton.SetActive(true);
         _leftButton.SetActive(true);
-        lamp.SetActive(false);
-        fireHy.SetActive(false);
-        Building.SetActive(false);
+        //lamp.SetActive(false);
+        //fireHy.SetActive(false);
+        //Building.SetActive(false);
         //switch (gameController.GetComponent<DrivingPath>().currentStreetTurnsPattern[currentStreetCount])
         //{
         //    case StreetType.None:
@@ -257,13 +266,13 @@ public class AmbulanceMovement : MonoBehaviour
         //        Building.SetActive(true);
         //        if (numberOfStreets <= 50 && numberOfStreets > 25)
         //        {
-                    
+
         //            streetThree.SetActive(false);
         //            _leftButton.SetActive(false);
         //        }
         //        else if (numberOfStreets < 25)
         //        {
-                    
+
         //            streetTwo.SetActive(false);
         //            _rightButton.SetActive(false);
         //        }
