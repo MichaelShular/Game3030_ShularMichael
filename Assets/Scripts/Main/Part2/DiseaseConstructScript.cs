@@ -25,6 +25,12 @@ public class DiseaseConstructScript : MonoBehaviour
     [Header("Stuff To Spawn")]
     public bool isBleeding;
     public GameObject _blood;
+    public bool _isKnife;
+    public GameObject _Knife;
+
+    public bool hitByCar;
+    GameObject _car;
+
     public BoxCollider _BloodSpawnLocation;
     public float amountOfBlood;
     public GameObject UIForBlood;
@@ -39,23 +45,25 @@ public class DiseaseConstructScript : MonoBehaviour
             case 0:
                 fillOutPath(tempNum, GameType.BacteriaKiller, GameType.PillMixer, GameType.CutOpen);
                 isBleeding = true;
-                amountOfBlood = 100;
+                _isKnife = true;
+
                 break;
             case 1:
                 fillOutPath(tempNum, GameType.BoneSort, GameType.CutOpen, GameType.PillMixer);
                 isBleeding = true;
-                amountOfBlood = 20;
-
+                _isKnife = true;
+                
                 break;
             case 2:
                 fillOutPath(tempNum, GameType.PillMixer, GameType.BacteriaKiller, GameType.BoneSort);
                 isBleeding = true;
-                amountOfBlood = 50;
+                hitByCar = true;
 
                 break;
             case 3:
                 fillOutPath(tempNum, GameType.CutOpen, GameType.BoneSort, GameType.BacteriaKiller);
                 isBleeding = false;
+                hitByCar = true;
 
                 break;
             default:

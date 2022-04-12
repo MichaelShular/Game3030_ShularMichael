@@ -5966,7 +5966,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18248
+  m_Name: pb_Mesh18250
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10254,7 +10254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1177585221
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12287,6 +12287,9 @@ MonoBehaviour:
   gameOrderNeedToPlay: 
   isBleeding: 0
   _blood: {fileID: 8190677730736774162, guid: 0e18c470df5d4b345983d46f785b8821, type: 3}
+  _isKnife: 0
+  _Knife: {fileID: 0}
+  hitByCar: 0
   _BloodSpawnLocation: {fileID: 868722556}
   amountOfBlood: 0
   UIForBlood: {fileID: 1177585220}
@@ -19449,7 +19452,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.5}
   m_SizeDelta: {x: 0, y: -5}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19843,7 +19846,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &2111215052
 MonoBehaviour:
   m_ObjectHideFlags: 0
