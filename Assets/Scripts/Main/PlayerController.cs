@@ -38,10 +38,20 @@ public class PlayerController : MonoBehaviour
     {
         if (isInterating && currentInteractableObjects != null)
         {
-            Debug.Log("asda");
-            Instantiate(currentInteractableObjects.GetComponent<InteractableObjectsController>().miniGameCanvas);
+            if (currentInteractableObjects.transform.parent.CompareTag("Blood"))
+            {
+                gameController.GetComponent<DiseaseConstructScript>().updateBloodAmount(currentInteractableObjects.transform.parent.GetComponent<BloodStats>()._bloodAmount);
+                Destroy(currentInteractableObjects.transform.parent.gameObject);
+            }
+            else
+            {
+                Instantiate(currentInteractableObjects.GetComponent<InteractableObjectsController>().miniGameCanvas);
+                gameController.GetComponent<GameControllerScript>().StopTimer();
+            }
+            //Debug.Log("asda");
+            
             //Destroy(currentInteractableObjects.gameObject);
-            gameController.GetComponent<GameControllerScript>().StopTimer();
+            
             isInterating = false;
         }
     }

@@ -18,14 +18,25 @@ public class InteractableObjectsController : MonoBehaviour, IPointerEnterHandler
     private Color redCivilianJointsColor;
     private Color redCivilianHighLimbsColor;
 
+    private Material currentMat;
+    public Material matToChange;
 
     // Start is called before the first frame update
     void Start()
     {
         objectRenderer = GetComponent<Renderer>();
         player = GameObject.Find("MainCharacter");
-        redCivilianHighLimbsColor = redCivilianHighLimbs.color;
-        redCivilianJointsColor = redCivilianJoints.color;
+        if (InteractableObjectType == objectType.Person)
+        {
+            redCivilianHighLimbsColor = redCivilianHighLimbs.color;
+            redCivilianJointsColor = redCivilianJoints.color;
+        }
+
+        if (InteractableObjectType == objectType.Blood)
+        {
+            currentMat = GetComponent<MeshRenderer>().material;
+        }
+
     }
 
     // Update is called once per frame
@@ -43,12 +54,16 @@ public class InteractableObjectsController : MonoBehaviour, IPointerEnterHandler
             case objectType.Object:
                 objectRenderer.material.color = Color.red;
                 break;
+            case objectType.Blood:
+                GetComponent<MeshRenderer>().material = matToChange;
+                break;
             default:
                 break;
         }
-        player.GetComponent<PlayerController>().currentInteractableObjects =this.gameObject;
-        
+        player.GetComponent<PlayerController>().currentInteractableObjects = this.gameObject;
+
         canInterat = true;
+        Debug.Log(canInterat);
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
@@ -63,18 +78,22 @@ public class InteractableObjectsController : MonoBehaviour, IPointerEnterHandler
             case objectType.Object:
                 objectRenderer.material.color = Color.white;
                 break;
+            case objectType.Blood:
+                GetComponent<MeshRenderer>().material = currentMat;
+                break;
             default:
                 break;
         }
-        
+
         canInterat = false;
 
     }
-   
+
     public enum objectType
     {
         Person,
-        Object
+        Object,
+        Blood
     }
 
 

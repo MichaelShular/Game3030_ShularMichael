@@ -227,6 +227,7 @@ public class AmbulanceMovement : MonoBehaviour
             streetThree.SetActive(false);
             this.transform.position = spawnPoint.transform.position;
             FirstPersonCamera.GetComponent<CinemachineVirtualCamera>().Priority = 15;
+            gameController.GetComponent<DiseaseConstructScript>().checkToAddedBloodUI();
         }
         
         
