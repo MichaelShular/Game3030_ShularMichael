@@ -25,11 +25,17 @@ public class DiseaseConstructScript : MonoBehaviour
     [Header("Stuff To Spawn")]
     public bool isBleeding;
     public GameObject _blood;
+    
     public bool _isKnife;
     public GameObject _Knife;
 
     public bool hitByCar;
-    GameObject _car;
+    public GameObject _car;
+
+    public bool wasShoot;
+    public GameObject _Gun;
+
+    public List<Transform> _itemSpawns;
 
     public BoxCollider _BloodSpawnLocation;
     public float amountOfBlood;
@@ -46,31 +52,40 @@ public class DiseaseConstructScript : MonoBehaviour
                 fillOutPath(tempNum, GameType.BacteriaKiller, GameType.PillMixer, GameType.CutOpen);
                 isBleeding = true;
                 _isKnife = true;
+                hitByCar = true;
+                wasShoot = true;
 
                 break;
             case 1:
                 fillOutPath(tempNum, GameType.BoneSort, GameType.CutOpen, GameType.PillMixer);
                 isBleeding = true;
                 _isKnife = true;
-                
+                hitByCar = true;
+                wasShoot = true;
                 break;
             case 2:
                 fillOutPath(tempNum, GameType.PillMixer, GameType.BacteriaKiller, GameType.BoneSort);
                 isBleeding = true;
                 hitByCar = true;
-
+                hitByCar = true;
+                wasShoot = true;
                 break;
             case 3:
                 fillOutPath(tempNum, GameType.CutOpen, GameType.BoneSort, GameType.BacteriaKiller);
                 isBleeding = false;
                 hitByCar = true;
-
+                hitByCar = true;
+                wasShoot = true;
                 break;
             default:
                 break;
         }
 
         bloodSpawning();
+        itemSpawning(_itemSpawns[0], _Gun, wasShoot);
+        itemSpawning(_itemSpawns[1], _car, hitByCar);
+        itemSpawning(_itemSpawns[2], _Knife, _isKnife);
+
     }
 
     // Update is called once per frame
@@ -126,13 +141,18 @@ public class DiseaseConstructScript : MonoBehaviour
             {
                 temp.GetComponent<BloodStats>()._bloodAmount = amountOfBlood + subtractedBloodFromPool;
             }
-
-
         }
-
-
-
     }
+
+    private void itemSpawning(Transform placement, GameObject itemToSpawn, bool check)
+    {
+        if (!check) return;
+        GameObject temp = Instantiate(itemToSpawn);
+        temp.transform.position = placement.position;
+    }
+
+
+
     public void checkToAddedBloodUI()
     {
         if (!isBleeding) return;
