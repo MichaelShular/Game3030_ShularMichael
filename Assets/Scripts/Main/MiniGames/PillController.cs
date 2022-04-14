@@ -35,10 +35,10 @@ public class PillController : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
-        if (!takePill)
-        {
-            GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
-        }
+        //if (!takePill)
+        //{
+        //    GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+        //}
         Destroy(this.gameObject);
     }
 }

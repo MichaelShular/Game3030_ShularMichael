@@ -9,11 +9,16 @@ public class MiniChooseController : MonoBehaviour
     [SerializeField] public GameObject miniGameCutOpenCanvas;
     [SerializeField] public GameObject miniGameBoneSortCanvas;
 
+    public GameObject miniGameResult;
+
     private DiseaseConstructScript gameChecker;
     // Start is called before the first frame update
     void Start()
     {
         gameChecker = GameObject.Find("GameController").GetComponent<DiseaseConstructScript>();
+        miniGameResult = GameObject.Find("GameController");
+        
+
     }
 
     // Update is called once per frame
@@ -23,29 +28,33 @@ public class MiniChooseController : MonoBehaviour
     }
 
     public void OpenMiniGameDisinfectant()
-    {
+    { 
+        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = !gameChecker.checkIfRightGameWasPlayed(GameType.BacteriaKiller);
         Instantiate(miniGameDisinfectantCanvas);
-        gameChecker.checkIfRightGameWasPlayed(GameType.BacteriaKiller);
+       
         Destroy(this.gameObject);
     }
 
     public void OpenMiniGamePills()
-    {
+    { 
+        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = !gameChecker.checkIfRightGameWasPlayed(GameType.PillMixer);
         Instantiate(miniGamePillsCanvas);
-        gameChecker.checkIfRightGameWasPlayed(GameType.PillMixer);
+       
         Destroy(this.gameObject);
     }
     public void OpenMiniGameCutOpen()
     {
+        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = !gameChecker.checkIfRightGameWasPlayed(GameType.CutOpen);
         Instantiate(miniGameCutOpenCanvas);
-        gameChecker.checkIfRightGameWasPlayed(GameType.CutOpen);
+        
         Destroy(this.gameObject);
     }
 
     public void OpenMiniGameBoneSort()
     {
+        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = !gameChecker.checkIfRightGameWasPlayed(GameType.BoneSort);
         Instantiate(miniGameBoneSortCanvas);
-        gameChecker.checkIfRightGameWasPlayed(GameType.BoneSort);
+        
         Destroy(this.gameObject);
     }
     public void backButton()

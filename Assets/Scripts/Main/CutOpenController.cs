@@ -31,13 +31,20 @@ public class CutOpenController : MonoBehaviour
 
     public void completeGame()
     {
+        bool checkIfResultNeedToOpen = true;
         foreach (bool check in gameFailed)
         {
             if (check)
             {
-                GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+                //GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+                gameController.GetComponent<MiniGameResultScript>().OpenResultsUI(false);
+                checkIfResultNeedToOpen = false;
                 break;
             }
+        }
+        if (checkIfResultNeedToOpen)
+        {
+            gameController.GetComponent<MiniGameResultScript>().OpenResultsUI(true);
         }
 
         Destroy(this.gameObject);

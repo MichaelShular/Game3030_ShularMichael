@@ -107,14 +107,16 @@ public class DiseaseConstructScript : MonoBehaviour
     //    playersGameList.Add(gamePlayed);
     //}
 
-    public void checkIfRightGameWasPlayed(GameType currentGame)
+    public bool checkIfRightGameWasPlayed(GameType currentGame)
     {
-        if (gameOrderNeedToPlay[gameCounter] != currentGame)
-        {
-            GetComponent<GameControllerScript>().changeHealth(-1);
-        }
+        //if (gameOrderNeedToPlay[gameCounter] != currentGame)
+        //{
+        //    GetComponent<GameControllerScript>().changeHealth(-1);
+        //}
 
         gameCounter++;
+        
+        return gameOrderNeedToPlay[gameCounter] == currentGame;   
     }
 
     private void bloodSpawning()

@@ -14,10 +14,12 @@ public class bacteriaSquasherController : MonoBehaviour
     public GameObject _bac4;
 
     private bool failMiniGame;
+    public GameObject gameController;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.Find("GameController");
         BuildMiniGame();
         failMiniGame = false;
     }
@@ -107,7 +109,12 @@ public class bacteriaSquasherController : MonoBehaviour
         }
         if (failMiniGame)
         {
-            GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+            //GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+            gameController.GetComponent<MiniGameResultScript>().OpenResultsUI(false);
+        }
+        else
+        {
+            gameController.GetComponent<MiniGameResultScript>().OpenResultsUI(true);
         }
         Destroy(miniGameCanvas);
     }

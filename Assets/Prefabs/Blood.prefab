@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blood 01
       objectReference: {fileID: 0}
+    - target: {fileID: 5264059563694192127, guid: 6d3d0382b5bfb4e4d9c210e4f63f5438, type: 3}
+      propertyPath: m_TagString
+      value: Blood
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7324983348116295651, guid: 6d3d0382b5bfb4e4d9c210e4f63f5438, type: 3}
     - {fileID: -2870590376893617809, guid: 6d3d0382b5bfb4e4d9c210e4f63f5438, type: 3}

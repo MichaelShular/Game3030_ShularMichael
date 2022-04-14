@@ -8,9 +8,12 @@ public class MiniGamePillController : MonoBehaviour
     public GameObject[] pills;
     public bool failMiniGame;
     public DiseaseConstructScript diseaseConstructScript;
+    public GameObject gameController;
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.Find("GameController");
+
         info = GameObject.FindGameObjectWithTag("Patient").GetComponent<PatientInfo>();
         diseaseConstructScript = GameObject.Find("GameController").GetComponent<DiseaseConstructScript>();
         //pills = GameObject.FindGameObjectsWithTag("PillButtons");
@@ -36,7 +39,12 @@ public class MiniGamePillController : MonoBehaviour
         }
         if (failMiniGame)
         {
-            GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+            //GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+            gameController.GetComponent<MiniGameResultScript>().OpenResultsUI(false);
+        }
+        else
+        {
+            gameController.GetComponent<MiniGameResultScript>().OpenResultsUI(true);
         }
         Destroy(this.gameObject);
     }

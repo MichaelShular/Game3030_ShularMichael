@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isInterating && currentInteractableObjects != null)
         {
-            if (currentInteractableObjects.transform.parent.CompareTag("Blood"))
+            if (currentInteractableObjects.CompareTag("Blood"))
             {
                 gameController.GetComponent<DiseaseConstructScript>().updateBloodAmount(currentInteractableObjects.transform.parent.GetComponent<BloodStats>()._bloodAmount);
                 Destroy(currentInteractableObjects.transform.parent.gameObject);
@@ -49,9 +49,9 @@ public class PlayerController : MonoBehaviour
                 gameController.GetComponent<GameControllerScript>().StopTimer();
             }
             //Debug.Log("asda");
-            
+            gameController.GetComponent<DiseaseConstructScript>().UIForBlood.SetActive(false);
             //Destroy(currentInteractableObjects.gameObject);
-            
+
             isInterating = false;
         }
     }

@@ -14,8 +14,11 @@ public class BoneSortController : MonoBehaviour
     public List<string> boneStringCheck;
 
     public List<GameObject> BoneList;
+
+    public GameObject gameController;
     void Start()
     {
+        gameController = GameObject.Find("GameController");
         int tempNum = Random.Range(0, 4);
 
         switch (tempNum)
@@ -71,16 +74,25 @@ public class BoneSortController : MonoBehaviour
 
     public void completeGame()
     {
+        bool checkIfResultNeedToOpen = true;
+
         for (int i = 0; i < numberOfBonesToSpawn; i++)
         {
             if (BoneList[i].GetComponent<boneObjectScript>().currentBox != boneStringCheck[i])
             {
                 Debug.Log(BoneList[i].GetComponent<boneObjectScript>().currentBox + boneStringCheck[i]);
-                GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+                //GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+                gameController.GetComponent<MiniGameResultScript>().OpenResultsUI(false);
+                checkIfResultNeedToOpen = false;
+                
                 break;
             }
 
 
+        }
+        if (checkIfResultNeedToOpen)
+        {
+            gameController.GetComponent<MiniGameResultScript>().OpenResultsUI(true);
         }
 
         Destroy(this.gameObject);
