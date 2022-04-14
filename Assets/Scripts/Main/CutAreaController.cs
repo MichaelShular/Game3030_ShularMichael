@@ -9,11 +9,12 @@ public enum areaType
 public class CutAreaController : MonoBehaviour
 {
     public bool canPress;
+    private CutOpenController cutOpenController;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        cutOpenController = transform.parent.GetComponent<CutOpenController>();
     }
 
     // Update is called once per frame
@@ -26,7 +27,11 @@ public class CutAreaController : MonoBehaviour
     {
         if (canPress)
         {
-            Debug.Log("cut");
+            cutOpenController.wasPressed(false);
+        }
+        else
+        {
+            cutOpenController.wasPressed(true);
         }
 
         Destroy(this.gameObject);
@@ -34,7 +39,7 @@ public class CutAreaController : MonoBehaviour
 
     public void BackgroundClicked()
     {
-        Debug.Log("back");
+        cutOpenController.wasPressed(true);
     }
 
 }

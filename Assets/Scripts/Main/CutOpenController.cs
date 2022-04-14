@@ -10,7 +10,7 @@ public class CutOpenController : MonoBehaviour
     public List<GameObject> cutNodeList;
 
     public int numberOfPressleft;
-    public bool gameFailed;
+    public bool[] gameFailed;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class CutOpenController : MonoBehaviour
         gameController = GameObject.Find("GameController");
         cutNodeList = new List<GameObject>();
         numberOfPressleft = 3;
-        gameFailed = false;
+        gameFailed = new bool[3] { false, false, false };
 
         buildMiniGame();
     }
@@ -26,11 +26,20 @@ public class CutOpenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void completeGame()
     {
+        foreach (bool check in gameFailed)
+        {
+            if (check)
+            {
+                GameObject.Find("GameController").GetComponent<GameControllerScript>().changeHealth(-1);
+                break;
+            }
+        }
+
         Destroy(this.gameObject);
     }
 
@@ -80,16 +89,14 @@ public class CutOpenController : MonoBehaviour
         }
     }
 
-    public void wasPressed()
+    public void wasPressed(bool failGame)
     {
         numberOfPressleft--;
         if (numberOfPressleft < 0) return;
-        if(numberOfPressleft == 0)
-        {
-
-        }
-
-
+        gameFailed[numberOfPressleft] = failGame;
+        
     }
+
+
 
 }
