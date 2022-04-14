@@ -9,6 +9,11 @@ public class MainMenuButtonController : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
     }
+
+    public void OpenPDF()
+    {
+        Application.OpenURL("https://drive.google.com/drive/folders/1xnt6pwI-j36DHtqbHtzIT0-1lcu2Eny6?usp=sharing");
+    }
     public void EndGame()
     {
         Application.Quit();
