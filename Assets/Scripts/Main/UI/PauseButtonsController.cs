@@ -20,6 +20,11 @@ public class PauseButtonsController : MonoBehaviour
         if (isPaused)
         {
             pauseCanvas.enabled = !pauseCanvas.enabled;
+            Time.timeScale = 0;
+            if (!pauseCanvas.enabled)
+            {
+                Time.timeScale = 1;
+            }
 
             isPaused = false;
         }
@@ -29,6 +34,12 @@ public class PauseButtonsController : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 
     public void OnPause(InputValue value)
     {
