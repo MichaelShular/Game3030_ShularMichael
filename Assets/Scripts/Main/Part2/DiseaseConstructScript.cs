@@ -41,40 +41,51 @@ public class DiseaseConstructScript : MonoBehaviour
     public float amountOfBlood;
     public GameObject UIForBlood;
 
+    public Animator animator;
+    public int whichGameSet;
     // Start is called before the first frame update
     void Start()
     {
-        int tempNum = Random.Range(0, diseasesNames.Count);
+        whichGameSet = Random.Range(0, diseasesNames.Count);
         gameCounter = 0;
-        switch (tempNum)
+        switch (whichGameSet)
         {
             case 0:
-                fillOutPath(tempNum, GameType.BacteriaKiller, GameType.PillMixer, GameType.CutOpen);
+                fillOutPath(whichGameSet, GameType.BacteriaKiller, GameType.PillMixer, GameType.CutOpen);
+                animator.SetInteger("AnimationPattern", 0);
+                
                 isBleeding = true;
-                _isKnife = true;
+                _isKnife = false;
                 hitByCar = true;
-                wasShoot = true;
+                wasShoot = false;
 
                 break;
             case 1:
-                fillOutPath(tempNum, GameType.BoneSort, GameType.CutOpen, GameType.PillMixer);
+                fillOutPath(whichGameSet, GameType.BoneSort, GameType.CutOpen, GameType.PillMixer);
+                animator.SetInteger("AnimationPattern", 1);
+
+
                 isBleeding = true;
                 _isKnife = true;
-                hitByCar = true;
-                wasShoot = true;
+                hitByCar = false;
+                wasShoot = false;
                 break;
             case 2:
-                fillOutPath(tempNum, GameType.PillMixer, GameType.BacteriaKiller, GameType.BoneSort);
-                isBleeding = true;
-                hitByCar = true;
-                hitByCar = true;
+                fillOutPath(whichGameSet, GameType.PillMixer, GameType.BacteriaKiller, GameType.BoneSort);
+                animator.SetInteger("AnimationPattern", 2);
+
+                isBleeding = false;
+                hitByCar = false;
+                _isKnife = false;
                 wasShoot = true;
                 break;
             case 3:
-                fillOutPath(tempNum, GameType.CutOpen, GameType.BoneSort, GameType.BacteriaKiller);
-                isBleeding = false;
-                hitByCar = true;
-                hitByCar = true;
+                fillOutPath(whichGameSet, GameType.CutOpen, GameType.BoneSort, GameType.BacteriaKiller);
+                animator.SetInteger("AnimationPattern", 3);
+
+                isBleeding = true;
+                hitByCar = false;
+                _isKnife = false;
                 wasShoot = true;
                 break;
             default:

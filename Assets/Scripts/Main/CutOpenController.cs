@@ -53,7 +53,7 @@ public class CutOpenController : MonoBehaviour
     private void buildMiniGame()
     {
 
-        int tempNum = Random.Range(0, 4);
+        int tempNum = gameController.GetComponent<DiseaseConstructScript>().whichGameSet;
         foreach (GameObject item in cutAreasPositions)
         {
             GameObject temp = Instantiate(cutNode, this.transform);
@@ -61,7 +61,7 @@ public class CutOpenController : MonoBehaviour
             temp.GetComponent<CutAreaController>().canPress = false;
             cutNodeList.Add(temp);
         }
-
+        //Debug.Log(tempNum);
         switch (tempNum)
         {
             case 0:

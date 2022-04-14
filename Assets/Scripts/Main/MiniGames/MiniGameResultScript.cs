@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class MiniGameResultScript : MonoBehaviour
 {
     public bool wasCorrectMiniGameChoosen;
     public GameObject UIGameObject;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,11 @@ public class MiniGameResultScript : MonoBehaviour
     public void closeResultsUI()
     {
         UIGameObject.SetActive(false);
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
 }

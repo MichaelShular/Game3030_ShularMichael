@@ -19,7 +19,7 @@ public class BoneSortController : MonoBehaviour
     void Start()
     {
         gameController = GameObject.Find("GameController");
-        int tempNum = Random.Range(0, 4);
+        int tempNum = gameController.GetComponent<DiseaseConstructScript>().whichGameSet;
 
         switch (tempNum)
         {
