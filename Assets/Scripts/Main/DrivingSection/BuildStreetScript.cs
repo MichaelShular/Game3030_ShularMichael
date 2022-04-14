@@ -16,6 +16,7 @@ public class BuildStreetScript : MonoBehaviour
     public GameObject straightLane;
     public GameObject LeftLane;
     public GameObject RightLane;
+    public List<GameObject> SideWalkFix;
 
     [Header("Ambulance")]
     public GameObject ambulance;
@@ -106,7 +107,10 @@ public class BuildStreetScript : MonoBehaviour
             UIButton.GetComponentInChildren<TextMeshProUGUI>().text = randomName;
             UIButton.SetActive(true);
         }
-
+        foreach (var item in SideWalkFix)
+        {
+            item.SetActive(false);
+        }
 
         switch (currentStreetTurnsPattern[currentStreetTurnsPatternCount])
         {
@@ -131,7 +135,8 @@ public class BuildStreetScript : MonoBehaviour
                     UIButtonList[1].GetComponentInChildren<TextMeshProUGUI>().text = winningStreetName;
                 }
 
-                
+                SideWalkFix[0].SetActive(true);
+                SideWalkFix[4].SetActive(true);
 
                 break;
             case WhichStreetLayout.StrightRight:
@@ -154,7 +159,9 @@ public class BuildStreetScript : MonoBehaviour
                     UIButtonList[2].GetComponentInChildren<TextMeshProUGUI>().text = winningStreetName;
                 }
 
-                
+                SideWalkFix[1].SetActive(true);
+                SideWalkFix[3].SetActive(true);
+
 
                 break;
             case WhichStreetLayout.LeftRight:
@@ -177,7 +184,8 @@ public class BuildStreetScript : MonoBehaviour
                     UIButtonList[2].GetComponentInChildren<TextMeshProUGUI>().text = winningStreetName;
                 }
 
-                
+                SideWalkFix[2].SetActive(true);
+
 
                 break;
             case WhichStreetLayout.AllStreets:
@@ -202,6 +210,9 @@ public class BuildStreetScript : MonoBehaviour
                     UIButtonList[2].GetComponentInChildren<TextMeshProUGUI>().text = winningStreetName;
 
                 }
+                SideWalkFix[3].SetActive(true);
+                SideWalkFix[4].SetActive(true);
+
 
                 break;
             default:
