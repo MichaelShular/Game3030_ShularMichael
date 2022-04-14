@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public enum GameType
 {
     BacteriaKiller,
@@ -16,7 +17,8 @@ public class DiseaseConstructScript : MonoBehaviour
     public List<string> diseasesNames;
     public string winningDiseaseName;
 
-
+    public GameObject UIGameObject;
+    public TextMeshProUGUI titletext;
     public List<GameType> gameOrderNeedToPlay;
     //public List<GameType> playersGameList;
 
@@ -127,7 +129,7 @@ public class DiseaseConstructScript : MonoBehaviour
 
         gameCounter++;
         
-        return gameOrderNeedToPlay[gameCounter] == currentGame;   
+        return gameOrderNeedToPlay[gameCounter - 1] == currentGame;
     }
 
     private void bloodSpawning()

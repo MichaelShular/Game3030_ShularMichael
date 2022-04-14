@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BacteriaMovement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class BacteriaMovement : MonoBehaviour
 {
     public bacteriaSquasherController miniGame;
     Rigidbody2D body;
@@ -32,19 +32,17 @@ public class BacteriaMovement : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     }
 
-    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+    public void OnClick()
     {
         Debug.Log("Enter");
-        Destroy(this.gameObject);
         miniGame.subtractBacteria();
+        Destroy(this.gameObject);
         
     }
 
-    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
-    {
 
 
-    }
+
 
 
 }

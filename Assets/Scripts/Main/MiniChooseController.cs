@@ -29,7 +29,7 @@ public class MiniChooseController : MonoBehaviour
 
     public void OpenMiniGameDisinfectant()
     { 
-        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = !gameChecker.checkIfRightGameWasPlayed(GameType.BacteriaKiller);
+        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = gameChecker.checkIfRightGameWasPlayed(GameType.BacteriaKiller);
         Instantiate(miniGameDisinfectantCanvas);
        
         Destroy(this.gameObject);
@@ -37,14 +37,14 @@ public class MiniChooseController : MonoBehaviour
 
     public void OpenMiniGamePills()
     { 
-        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = !gameChecker.checkIfRightGameWasPlayed(GameType.PillMixer);
+        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = gameChecker.checkIfRightGameWasPlayed(GameType.PillMixer);
         Instantiate(miniGamePillsCanvas);
        
         Destroy(this.gameObject);
     }
     public void OpenMiniGameCutOpen()
     {
-        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = !gameChecker.checkIfRightGameWasPlayed(GameType.CutOpen);
+        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = gameChecker.checkIfRightGameWasPlayed(GameType.CutOpen);
         Instantiate(miniGameCutOpenCanvas);
         
         Destroy(this.gameObject);
@@ -52,7 +52,7 @@ public class MiniChooseController : MonoBehaviour
 
     public void OpenMiniGameBoneSort()
     {
-        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = !gameChecker.checkIfRightGameWasPlayed(GameType.BoneSort);
+        miniGameResult.GetComponent<MiniGameResultScript>().wasCorrectMiniGameChoosen = gameChecker.checkIfRightGameWasPlayed(GameType.BoneSort);
         Instantiate(miniGameBoneSortCanvas);
         
         Destroy(this.gameObject);

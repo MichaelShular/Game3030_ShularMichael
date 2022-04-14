@@ -21401,7 +21401,7 @@ MonoBehaviour:
   - {fileID: 1436113419}
   - {fileID: 894127760}
   ambulance: {fileID: 119816279}
-  numberOfTurns: 1
+  numberOfTurns: 3
   currentStreetTurnsPattern: 
   winVisuals:
   - {fileID: 1163052877}
@@ -21511,6 +21511,8 @@ MonoBehaviour:
   - Fatuitas Cerebralis
   - Choxia Nocfectio
   winningDiseaseName: 
+  UIGameObject: {fileID: 1684807522}
+  titletext: {fileID: 2119989278}
   gameOrderNeedToPlay: 
   isBleeding: 0
   _blood: {fileID: 8190677730736774162, guid: 0e18c470df5d4b345983d46f785b8821, type: 3}

@@ -6,27 +6,23 @@ using TMPro;
 public class ConditionSelectionController : MonoBehaviour
 {
 
-    public GameObject UIGameObject;
+    
     public GameObject gameController;
     public TextMeshProUGUI titletext;
 
     // Start is called before the first frame update
     void Start()
     {
-        UIGameObject = GameObject.Find("FinalResults");
-        titletext = GameObject.Find("WinLose").GetComponent<TextMeshProUGUI>();
-    }
+        gameController = GameObject.Find("GameController");
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        titletext = gameController.GetComponent<DiseaseConstructScript>().titletext;
+
     }
 
 
     public void ButtonOne()
     {
-        UIGameObject.SetActive(true);
+        gameController.GetComponent<DiseaseConstructScript>().UIGameObject.SetActive(true);
         if (gameController.GetComponent<DiseaseConstructScript>().whichGameSet == 0)
         {
             titletext.text = "Winner, you gave the patient the right diagnosis.";
@@ -41,7 +37,8 @@ public class ConditionSelectionController : MonoBehaviour
 
     public void ButtonTwo()
     {
-        UIGameObject.SetActive(true);
+        gameController.GetComponent<DiseaseConstructScript>().UIGameObject.SetActive(true);
+
         if (gameController.GetComponent<DiseaseConstructScript>().whichGameSet == 1)
         {
             titletext.text = "Winner, you gave the patient the right diagnosis.";
@@ -59,7 +56,8 @@ public class ConditionSelectionController : MonoBehaviour
 
     public void ButtonThree()
     {
-        UIGameObject.SetActive(true);
+        gameController.GetComponent<DiseaseConstructScript>().UIGameObject.SetActive(true);
+
         if (gameController.GetComponent<DiseaseConstructScript>().whichGameSet == 2)
         {
             titletext.text = "Winner, you gave the patient the right diagnosis.";
@@ -77,7 +75,8 @@ public class ConditionSelectionController : MonoBehaviour
 
     public void ButtonFour()
     {
-        UIGameObject.SetActive(true);
+        gameController.GetComponent<DiseaseConstructScript>().UIGameObject.SetActive(true);
+
         if (gameController.GetComponent<DiseaseConstructScript>().whichGameSet == 3)
         {
             titletext.text = "Winner, you gave the patient the right diagnosis.";

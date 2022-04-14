@@ -29,6 +29,7 @@ public class bacteriaSquasherController : MonoBehaviour
     {
         if(amountOfBacteria <= 0)
         {
+            completeGame();
             Destroy(miniGameCanvas);
         }
     }
@@ -99,13 +100,14 @@ public class bacteriaSquasherController : MonoBehaviour
     public void completeGame()
     {
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Bacteria");
-
+        failMiniGame = false;
         for (int i = 0; i < temp.Length; i++)
         {
             if (temp[i].GetComponent<BacteriaMovement>().badBac)
             {
                 failMiniGame = true;
             }
+            Debug.Log(temp[i].GetComponent<BacteriaMovement>().badBac);
         }
         if (failMiniGame)
         {
